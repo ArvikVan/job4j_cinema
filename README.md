@@ -1,7 +1,6 @@
 # job4j_cinema
 [![Build Status](https://app.travis-ci.com/ArvikVan/job4j_cinema.svg?branch=main)](https://app.travis-ci.com/ArvikVan/job4j_cinema)
-[![codecov](https://codecov.io/gh/ArvikVan/job4j_cinema/branch/master/graph/badge.svg?token=SsJi6xoOr4)](https://codecov.io/gh/ArvikVan/job4j_cinema)
-
+[![codecov](https://codecov.io/gh/ArvikVan/job4j_cinema/branch/master/graph/badge.svg?token=cQgQWLo4SL)](https://codecov.io/gh/ArvikVan/job4j_cinema)
 ## Проект - Cinema - Servlets<br>
 
 
