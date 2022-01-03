@@ -16,20 +16,12 @@ import static org.hamcrest.CoreMatchers.nullValue;
  * @since 03.01.2022
  */
 public class DbStoreTest {
-    @Test
-    public void whenCreateTicket() throws SQLException {
-        Store store = DbStore.instOf();
-        Ticket ticket = new Ticket(1, 1, 1, 1);
-        store.saveTicket(ticket);
-        Ticket ticketInDb = store.findTicketById(ticket.getAccountId());
-        assertThat(ticketInDb.getAccountId(), is(ticket.getAccountId()));
-    }
 
     @Test
     public void whenCreateAccount() {
         Store store = DbStore.instOf();
-        Account account = new Account("Arv", "555-555-5655");
-        Account account2 = new Account("Mavr", "555-555-4444");
+        Account account = new Account(1, "Arv", "555-555-5655");
+        Account account2 = new Account(2, "Mavr", "555-555-4444");
         store.saveAccount(account);
         store.saveAccount(account2);
         int accountInDb = store.findIdAccountByPhone(account.getPhone());
