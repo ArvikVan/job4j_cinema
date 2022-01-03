@@ -1,8 +1,10 @@
 # job4j_cinema
 [![Build Status](https://app.travis-ci.com/ArvikVan/job4j_cinema.svg?branch=master)](https://app.travis-ci.com/ArvikVan/job4j_cinema)
-[![codecov](https://codecov.io/gh/ArvikVan/job4j_cinema/branch/master/graph/badge.svg?token=cQgQWLo4SL)](https://codecov.io/gh/ArvikVan/job4j_cinema)
-## Проект - Cinema - Servlets<br>
-
+## Проект - Cinema - Servlets
+<br><i><h4>Страница выбора меcта
+![](src/main/images/cinema1.png)
+<br><i><h4>Страница ввода данных
+![](src/main/images/cinema2.png)
 
 ## Контакты для связи<br>
 <img src="https://img.icons8.com/clouds/100/000000/gmail-new.png" width="10"/> arvikvan@gmail.com<br>
