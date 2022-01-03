@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+            integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+            integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+            crossorigin="anonymous"></script>
+
+    <script>
+        (() => setTimeout(update, 0))();
+        (() => setInterval(update, 5000))();
+        function update() {
+            let url = "http://localhost:8081/job4j_cinema/hall";
+            $.get(url, function (responseJson) {
+                $.each(responseJson, function (index, item) {
+                    let element = $("#" + item);
+                    element.closest('td').text("Место занято")
+                });
+            });
+        }
+        function payment() {
+            let inputElement = $('input[name=place]:checked');
+            let url = "http://localhost:8081/job4j_cinema/payment.html?seat=" + inputElement.val();
+            if (inputElement.length < 1) {
+                alert("Выберите нужное место в зале.");
+                return false;
+            }
+            window.location.href = url;
+        }
+    </script>
+    <title>Cinema - Заказ билетов</title>
+</head>
+<body>
+<div class="container">
+    <div class="row pt-3">
+        <h4>
+            Бронирование места на сеанс
+        </h4>
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th style="width: 120px;">Ряд / Место</th>
+                <th>1</th>
+                <th>2</th>
+                <th>3</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th>1</th>
+                <td><input type="radio" name="place" value="11" id="11"> Ряд 1, Место 1</td>
+                <td><input type="radio" name="place" value="12" id="12"> Ряд 1, Место 2</td>
+                <td><input type="radio" name="place" value="13" id="13"> Ряд 1, Место 3</td>
+            </tr>
+            <tr>
+                <th>2</th>
+                <td><input type="radio" name="place" value="21" id="21"> Ряд 2, Место 1</td>
+                <td><input type="radio" name="place" value="22" id="22"> Ряд 2, Место 2</td>
+                <td><input type="radio" name="place" value="23" id="23"> Ряд 2, Место 3</td>
+            </tr>
+            <tr>
+                <th>3</th>
+                <td><input type="radio" name="place" value="31" id="31"> Ряд 3, Место 1</td>
+                <td><input type="radio" name="place" value="32" id="32"> Ряд 3, Место 2</td>
+                <td><input type="radio" name="place" value="33" id="33"> Ряд 3, Место 3</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="row float-right">
+        <button type="button" class="btn btn-success" onclick="return payment()">Оплатить</button>
+    </div>
+</div>
+</body>
+</html>
