@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+
 /**
  * @author ArvikV
  * @version 1.0
@@ -55,6 +56,7 @@ public class HallServlet extends HttpServlet {
             }
         } catch (SQLException e) {
             LOG.info("Exception doPost Servlet HallServlet " + e);
+            req.getRequestDispatcher("error.html").forward(req, resp);
         }
 
     }

@@ -22,7 +22,6 @@ import java.util.Properties;
  */
 public class DbStore implements Store {
     private static final Logger LOG = LoggerFactory.getLogger(DbStore.class);
-    private static final DbStore INSTANCE = new DbStore();
     private final BasicDataSource pool = new BasicDataSource();
 
 private DbStore() {
@@ -75,8 +74,6 @@ private static final class Lazy {
     public boolean saveTicket(Ticket ticket) throws SQLException {
         if (ticket.getId() == 0) {
             createTicket(ticket);
-        } else {
-            update(ticket);
         }
         return false;
     }
@@ -96,13 +93,13 @@ private static final class Lazy {
                     ticket.setId(id.getInt(1));
                 }
             }
-        } catch (Exception e) {
-            return null;
+        } catch (SQLException e) {
+            LOG.error("public Ticket createTicket(Ticket ticket)", e);
         }
         return ticket;
     }
 
-    private void update(Ticket ticket) {
+    /*private void update(Ticket ticket) {
         try (Connection cn = pool.getConnection();
              PreparedStatement ps = cn.prepareStatement(
                      "UPDATE ticket SET row_ticket=?, cell=?, account_id=? WHERE id=?"
@@ -116,7 +113,7 @@ private static final class Lazy {
         } catch (Exception e) {
             LOG.error("Exception in TICKET UPDATE method.", e);
         }
-    }
+    }*/
 
     @Override
     public void saveAccount(Account account) {
@@ -141,7 +138,6 @@ private static final class Lazy {
                     account.setId(id.getInt(1));
                 }
             }
-
         } catch (Exception e) {
             LOG.error("Exception in ACCOUNT CREATE method.", e);
         }
