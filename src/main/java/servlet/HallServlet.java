@@ -56,7 +56,7 @@ public class HallServlet extends HttpServlet {
             }
         } catch (SQLException e) {
             LOG.info("Exception doPost Servlet HallServlet " + e);
-            req.getRequestDispatcher("error.html").forward(req, resp);
+            resp.sendRedirect(req.getContextPath() + "job4j_cinema/error.html");
         }
 
     }
