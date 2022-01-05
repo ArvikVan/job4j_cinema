@@ -95,6 +95,7 @@ private static final class Lazy {
             }
         } catch (SQLException e) {
             LOG.error("public Ticket createTicket(Ticket ticket)", e);
+            throw e;
         }
         return ticket;
     }
